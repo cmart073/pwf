@@ -1,1 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pooping with Friends</title>
+  <meta name="description" content="Track where you poop, capture fart sounds, and bond over shared spots with friends." />
+  <meta property="og:title" content="Pooping with Friends" />
+  <meta property="og:description" content="Track where you poop, capture fart sounds, and bond over shared spots with friends." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#8b5e3c" />
+  <!-- Tailwind (CDN for zero-build simplicity) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --brown:#8b5e3c; --amber:#fbbf24; }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-amber-50 to-orange-100 text-slate-800 flex flex-col">
+  <!-- Nav -->
+  <nav class="bg-white/90 backdrop-blur border-b border-amber-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-extrabold text-lg" aria-label="Pooping with Friends home">
+        <span>💩</span><span class="text-[var(--brown)]">Pooping with Friends</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="/login"  class="hover:text-orange-600">Log in</a>
+        <a href="/signup" class="hover:text-orange-600 font-semibold">Create account</a>
+        <a href="/account" class="hover:text-orange-600">View account</a>
+        <a href="/stats"   class="hover:text-orange-600">Stats</a>
+      </div>
+      <button id="navMenu" class="md:hidden rounded-lg px-3 py-2 border border-amber-300">Menu</button>
+    </div>
+    <div id="mobileNav" class="md:hidden hidden border-t border-amber-200">
+      <div class="px-4 py-3 flex flex-col gap-2 bg-white">
+        <a href="/login"  class="hover:text-orange-600">Log in</a>
+        <a href="/signup" class="hover:text-orange-600 font-semibold">Create account</a>
+        <a href="/account" class="hover:text-orange-600">View account</a>
+        <a href="/stats"   class="hover:text-orange-600">Stats</a>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Hero -->
+  <header class="flex-1">
+    <div class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <!-- Inline hero art (clean, cartoony, family-friendly) -->
+      <div class="order-2 md:order-1">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-[var(--brown)] mb-4">
+          Bond Over Shared Spots & Laughs
+        </h1>
+        <p class="text-lg text-slate-700 mb-8">
+          Track where you poop, capture fart sounds, and share with friends. Simple, private by default, and fun.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a id="ctaPoop" href="#" class="inline-flex items-center justify-center rounded-2xl px-6 py-3 text-white text-lg font-semibold bg-[var(--brown)] hover:opacity-90">
+            🚽 Log a Poop
+          </a>
+          <a id="ctaFart" href="#" class="inline-flex items-center justify-center rounded-2xl px-6 py-3 text-white text-lg font-semibold bg-orange-500 hover:bg-orange-600">
+            💨 Capture a Fart
+          </a>
+        </div>
+        <p id="ctaMsg" class="text-sm text-slate-600 mt-3 hidden">
+          Tip: Install the mobile app first, then these buttons will open it automatically.
+        </p>
+      </div>
+      <div class="order-1 md:order-2">
+        <!-- Simple inline SVG illustration -->
+        <svg viewBox="0 0 600 420" class="w-full drop-shadow-xl" role="img" aria-label="Friends with phones and a map pin beside a toilet">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#fef3c7"/><stop offset="1" stop-color="#fde68a"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="600" height="420" fill="url(#g)"/>
+          <!-- Toilet (cute) -->
+          <g transform="translate(60,160)">
+            <rect x="40" y="70" width="120" height="90" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="4"/>
+            <rect x="60" y="0" width="80" height="60" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="4"/>
+            <circle cx="100" cy="105" r="22" fill="#f1f5f9"/>
+          </g>
+          <!-- Phone with map and pin -->
+          <g transform="translate(250,80)">
+            <rect x="0" y="0" width="180" height="300" rx="28" fill="#111827" />
+            <rect x="12" y="40" width="156" height="220" rx="14" fill="#dbeafe"/>
+            <!-- stylized map -->
+            <path d="M12,160 L168,120 L168,180 L12,210 Z" fill="#a7f3d0" opacity="0.7"/>
+            <path d="M12,100 L168,70 L168,100 L12,140 Z" fill="#93c5fd" opacity="0.7"/>
+            <!-- pin -->
+            <g transform="translate(105,150)">
+              <circle cx="0" cy="0" r="14" fill="#ef4444"/><circle cx="0" cy="0" r="6" fill="#fff"/>
+              <path d="M0,14 L-6,26 L6,26 Z" fill="#ef4444"/>
+            </g>
+          </g>
+          <!-- Two friends (simple avatars) -->
+          <g transform="translate(470,250)">
+            <circle cx="0" cy="0" r="36" fill="#fbbf24"/><circle cx="0" cy="-12" r="14" fill="#fde68a"/>
+            <rect x="-16" y="6" width="32" height="20" rx="6" fill="#111827"/>
+          </g>
+          <g transform="translate(520,220)">
+            <circle cx="0" cy="0" r="36" fill="#60a5fa"/><circle cx="0" cy="-12" r="14" fill="#93c5fd"/>
+            <rect x="-16" y="6" width="32" height="20" rx="6" fill="#111827"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features -->
+  <section class="bg-white/80 border-y border-amber-200">
+    <div class="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl bg-amber-100/60 shadow">
+        <h3 class="text-xl font-bold mb-2">📍 Track your spots</h3>
+        <p>Log locations with quick surveys. See your history at a glance.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-amber-100/60 shadow">
+        <h3 class="text-xl font-bold mb-2">🤝 Share with friends</h3>
+        <p>Create read-only links and discover shared places together.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-amber-100/60 shadow">
+        <h3 class="text-xl font-bold mb-2">😂 Capture fart sounds</h3>
+        <p>Record sounds (phase 2) and get playful name suggestions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-sm text-slate-600">
+    <div class="max-w-6xl mx-auto px-4 py-6 flex flex-wrap gap-4 items-center justify-between">
+      <div>© <span id="yr"></span> Pooping with Friends</div>
+      <div class="flex gap-4">
+        <a href="/about"   class="hover:underline">About</a>
+        <a href="/privacy" class="hover:underline">Privacy</a>
+        <a href="/terms"   class="hover:underline">Terms</a>
+        <a href="/contact" class="hover:underline">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Mobile nav
+    const btn = document.getElementById('navMenu');
+    const mob = document.getElementById('mobileNav');
+    if (btn) btn.onclick = () => mob.classList.toggle('hidden');
+
+    // Deep-link helpers: try to open app scheme; fallback hint if not installed.
+    const hasAndroid = /Android/i.test(navigator.userAgent);
+    const hasIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const ctaMsg = document.getElementById('ctaMsg');
+
+    function openDeepLink(url, fallbackPath) {
+      let didOpen = false;
+      const t = Date.now();
+      // Try to open the scheme
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = url;
+      document.body.appendChild(iframe);
+
+      // After 1s, if page still visible and no switch happened, show hint/fallback
+      setTimeout(() => {
+        const elapsed = Date.now() - t;
+        if (elapsed < 1500) {
+          if (ctaMsg) {
+            ctaMsg.classList.remove('hidden');
+            ctaMsg.textContent = "Couldn’t open the app automatically. Install the app first, or use the web fallback.";
+          }
+          // Optional: navigate to a web fallback (stub pages)
+          if (fallbackPath) window.location.href = fallbackPath;
+        }
+        document.body.removeChild(iframe);
+      }, 1000);
+    }
+
+    document.getElementById('ctaPoop').addEventListener('click', (e) => {
+      e.preventDefault();
+      // Deep link first, then fallback to /log (you can build a simple web logger later)
+      openDeepLink('pwf://log', '/log');
+    });
+    document.getElementById('ctaFart').addEventListener('click', (e) => {
+      e.preventDefault();
+      openDeepLink('pwf://fart', '/fart');
+    });
+  </script>
+</body>
+</html>
